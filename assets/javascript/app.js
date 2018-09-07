@@ -11,81 +11,48 @@ window.onload = function () {
 
   }
 
-var array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-for(i = 0; i <10; i++)
-{   
-    var random = array[Math.floor(Math.random()*array.length) + 1];
-    console.log(random)
-    if ( array[i] === random) 
-        {
-            array.splice(i, 1); 
-        }
-        console.log(array)   
-}
-
-var intervalId
-var clockRunning = false
+var answer = ["Faithful","Intelligent","Playful","Tusks","Biodegradable","Atmosphere","Solar energy","Oil tankers","Deforestation","Habitat"]
 var challenge = {
-    question1: "If a married man refrains from having affairs with other women we can say that he is",
-    answer1A: "Loyal",
-    answer1B: "Endearing",
-    answer1C: "Faithful",
-    answer1D: "Reassuring",
+  question1:["If a married man refrains from having affairs with other women we can say that he is","Loyal","Endearing","Faithful","Reassuring"],
 
-    question2: "What is the most suitable word to describe someone who is a deep and systematic thinker",
-    answer2A: "Clever",
-    answer2B: "Smart",
-    answer2C: "Intelligent",
-    answer2D: "Dull",
+  question2:["What is the most suitable word to describe someone who is a deep and systematic thinker","Clever","Smart","Intelligent","Dull"],
 
-    question3: "Animals which like to play can be said to be",
-    answer3A: "Play-liking",
-    answer3B: "Play-centered",
-    answer3C: "Playful",
-    answer3D: "Players",
+  question3:["Animals which like to play can be said to be","Play-liking","Play-centered","Playful","Players"],
 
-    question4: "Elephants are able to kill and injure other animals by making use of sharp and pointed things called",
-    answer4A: "Long teeth",
-    answer4B: "Tusks",
-    answer4C: "Trunks",
-    answer4D: "Hooves",
+  question4:["Elephants are able to kill and injure other animals by making use of sharp and pointed things called","Long teeth","Tusks","Trunks","Hooves"],
 
-    question5: "Substances which dissolve into the ground after being thrown away are said to be",
-    answer5A: "Environmentally friendly",
-    answer5B: "Biodegradable",
-    answer5C: "Untraceable",
-    answer5D: "Dis-solvent",
+  question5:["Substances which dissolve into the ground after being thrown away are said to be","Environmentally friendly","Biodegradable","Untraceable","Dis-solvent"],
 
-    question6: "The layer of air surrounding the earth, and which is a source of oxygen, is called",
-    answer6A: "The outer layer",
-    answer6B: "Stratosphere",
-    answer6C: "Ozone layer",
-    answer6D: "RAtmosphere",
+  question6:["The layer of air surrounding the earth, and which is a source of oxygen, is called","The outer layer","Stratosphere","Ozone layer","Atmosphere"],
 
-    question7: "When we make use of the sun to produce power, we call this type of power",
-    answer7A: "Solar energy",
-    answer7B: "Sun energy",
-    answer7C: "Light energy",
-    answer7D: "Solar force",
+  question7:["When we make use of the sun to produce power, we call this type of power","Solar energy","Sun energy","Light energy","Solar force"],
 
-    question8: "Ships used to transport oil are called",
-    answer8A: "Oil ships",
-    answer8B: "Oil tanks",
-    answer8C: "Oil tankers ",
-    answer8D: "Oil boats",
+  question8:["Ships used to transport oil are called","Oil ships","Oil tanks","Oil tankers","Oil boats"],
 
-    question9: "What word or words describe the gradual decline in the amount of land occupied by forests",
-    answer9A: "Forest shrinking",
-    answer9B: "Forest decline",
-    answer9C: "Forest declining",
-    answer9D: "Deforestation",
+  question9:["What word or words describe the gradual decline in the amount of land occupied by forests","Forest shrinking","Forest decline","Forest declining","Deforestation"],
 
-    question10: "The area of land that animals occupy, and which they depend on as a source of food, is called",
-    answer10A: "Habitation",
-    answer10B: "Habitat",
-    answer10C: "Arable",
-    answer10D: "Land territory",
+  question10:["The area of land that animals occupy, and which they depend on as a source of food, is called","Habitation","Habitat","Arable","Land territory"],
 }
+
+var array = [challenge.question1, challenge.question2,challenge.question3,challenge.question4,challenge.question5,challenge.question6,challenge.question7,
+  challenge.question8,challenge.question9,challenge.question10];
+
+for(i = 1; i <11; i++)
+{   
+    var random = array[Math.floor(Math.random()*10)];
+    var number = (array.splice(array.indexOf(random), 1));
+    var randomnumber =  number[0]; 
+ 
+    $("#question").text(randomnumber[0]); 
+    $(".answer1").text(randomnumber[1])  
+    $(".answer2").text(randomnumber[2]) 
+    $(".answer3").text(randomnumber[3]) 
+    $(".answer4").text(randomnumber[4]) 
+}
+
+var intervalId  
+var clockRunning = false
+
 var stopwatch = {
 
   time: 10,
@@ -117,6 +84,6 @@ var stopwatch = {
     {
         stopwatch.stop();
         stopwatch.reset();
-    }
+       }
   }
 }
