@@ -1,7 +1,10 @@
 
-var count = 0;
+var rightanswer = 0;
+var wrong = 0;
+var noanswer = 0;
 var firstclick = false;
 var firsttrue = true;
+var finish = false;
 var end = 0;
 var a;
 var b;
@@ -26,17 +29,17 @@ window.onload = function () {
           answer.forEach(function(element) {
             if (element === a)
             {
-              count++;
+              rightanswer++;
               firsttrue = false;
               $("#response").text("Goodjob!! You're right");
-              $("#result").text("You got " + count + "point");
+              $("#result").text("You got " + rightanswer + " point");
               stopwatch.stop();
-              stopwatch.reset();
-
+              stopwatch.reset();  
             }
             else if(firsttrue === true && element !=a )
             {
               $("#response").text("You got a wrong answer!!!");
+              $("#result").text("You have " + wrong + " answer");
               stopwatch.stop();
               stopwatch.reset();      
             }
@@ -54,15 +57,16 @@ window.onload = function () {
         answer.forEach(function(element) {
           if (element === b)
           {
-            count++;
+            rightanswer++;
             firsttrue = false;
             $("#response").text("Goodjob!! You're right");
-            $("#result").text("You got " + count + " point");
+            $("#result").text("You got " + rightanswer + " point");
             stopwatch.stop();
             stopwatch.reset();
           }
           else if(firsttrue === true && element != b)
           {
+            wrong++;
             $("#response").text("You got a wrong answer");
             stopwatch.stop();
             stopwatch.reset()           
@@ -81,15 +85,16 @@ window.onload = function () {
         answer.forEach(function(element) {
           if (element === c)
           {
-            count++;
+            rightanswer++;
             firsttrue = false;
             $("#response").text("Goodjob!! You're right");
-            $("#result").text("You got " + count + "point");
+            $("#result").text("You got " + rightanswer + "point");
             stopwatch.stop();
             stopwatch.reset();
           }
           else if(firsttrue === true && element != c)
           {
+            wrong++;
             $("#response").text("You got a wrong answer");
             stopwatch.stop();
             stopwatch.reset()
@@ -109,16 +114,17 @@ window.onload = function () {
         answer.forEach(function(element) {  
           if (element === d)
           {
-            count++;
+            rightanswer++;
             firsttrue = false;
             $("#response").text("Goodjob!! You're right");
-            $("#result").text("You got " + count + "point");
+            $("#result").text("You got " + rightanswer + "point");
             stopwatch.stop();
             stopwatch.reset();
 
           }
           else if(firsttrue === true && element !=d)
           {
+            wrong++;
             $("#response").text("You got a wrong answer");
             stopwatch.stop();
             stopwatch.reset()
@@ -161,7 +167,6 @@ function startquestion()
 { 
     var random = array[Math.floor(Math.random()*10)];
     var number = (array.splice(array.indexOf(random), 1));
-    console.log(number)
     var randomnumber =  number[0]; 
     $("#question").text(randomnumber[0]); 
     a = randomnumber[1];
@@ -177,17 +182,36 @@ function startquestion()
 function nextquestion()
 {
   firstclick = false;
+  firsttrue = true;
+  end++;
   $("#response").empty();
-  $("#display").text("Time Remaining: 10 Seconds")
+  $("#result").empty();
+  $("#display").text("Time Remaining: 10 Seconds");
   stopwatch.time = 10;
   stopwatch.start();
-  startquestion();
+  if( end === 10)
+  {
+    endfunc();
+  }
+  else
+  {
+    startquestion();
+  }
 }
 
-function end()
+function endfunc()
 {
-  
+  finish = true;
+  $("#response").text("Congrat!!! You finished all the questions");
+  $("#result").html(
+    `<h3>Correct Answer: ${rightanswer}</h3>
+    <h3>Wrong Answer: ${wrong}</h3>
+    <h3>No Answer: ${noanswer }</h3>
+    `
+    );
 }
+
+
 
 var intervalId  
 var clockRunning = false
@@ -221,6 +245,7 @@ var stopwatch = {
     $("#display").text("Time Remaining: " +  stopwatch.time + " Seconds")
     if(stopwatch.time === 0)
     {
+        noanswer++;
         stopwatch.stop();
         stopwatch.reset();
        }
