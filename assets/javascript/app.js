@@ -1,12 +1,133 @@
 
+var count = 0;
+var firstclick = false;
+var firsttrue = true;
+var end = 0;
+var a;
+var b;
+var c;
+var d;
+
 $(".content").hide();
 window.onload = function () {
-    $(".btn").on("click",function()
+    $(".startgame").on("click",function()
     {
-        stopwatch.start();
-        $(".btn").hide();
-        $(".content").show();
-        
+      startquestion();
+      stopwatch.start();
+      $(".btn").hide();
+      $(".content").show();       
+    });
+
+    $(".answer1").on("click",function()
+    {
+        if (firstclick === false)
+        {
+          firstclick = true;
+          answer.forEach(function(element) {
+            if (element === a)
+            {
+              count++;
+              firsttrue = false;
+              $("#response").text("Goodjob!! You're right");
+              $("#result").text("You got " + count + "point");
+              stopwatch.stop();
+              stopwatch.reset();
+
+            }
+            else if(firsttrue === true && element !=a )
+            {
+              $("#response").text("You got a wrong answer!!!");
+              stopwatch.stop();
+              stopwatch.reset();      
+            }
+          });
+          setTimeout(nextquestion,3000);
+        }
+        else{}
+      });
+
+    $(".answer2").on("click",function()
+    {
+      if (firstclick === false)
+      {
+        firstclick = true;
+        answer.forEach(function(element) {
+          if (element === b)
+          {
+            count++;
+            firsttrue = false;
+            $("#response").text("Goodjob!! You're right");
+            $("#result").text("You got " + count + " point");
+            stopwatch.stop();
+            stopwatch.reset();
+          }
+          else if(firsttrue === true && element != b)
+          {
+            $("#response").text("You got a wrong answer");
+            stopwatch.stop();
+            stopwatch.reset()           
+          }
+        });
+        setTimeout(nextquestion,3000);
+      }
+      else{}
+    });
+
+    $(".answer3").on("click",function()
+    {
+      if (firstclick === false)
+      {
+        firstclick = true;
+        answer.forEach(function(element) {
+          if (element === c)
+          {
+            count++;
+            firsttrue = false;
+            $("#response").text("Goodjob!! You're right");
+            $("#result").text("You got " + count + "point");
+            stopwatch.stop();
+            stopwatch.reset();
+          }
+          else if(firsttrue === true && element != c)
+          {
+            $("#response").text("You got a wrong answer");
+            stopwatch.stop();
+            stopwatch.reset()
+            
+          }
+        });
+        setTimeout(nextquestion,3000);
+      }
+      else{}
+    });
+
+    $(".answer4").on("click",function()
+    {
+      if (firstclick === false)
+      {
+        firstclick = true;
+        answer.forEach(function(element) {  
+          if (element === d)
+          {
+            count++;
+            firsttrue = false;
+            $("#response").text("Goodjob!! You're right");
+            $("#result").text("You got " + count + "point");
+            stopwatch.stop();
+            stopwatch.reset();
+
+          }
+          else if(firsttrue === true && element !=d)
+          {
+            $("#response").text("You got a wrong answer");
+            stopwatch.stop();
+            stopwatch.reset()
+            
+          }
+        });
+        setTimeout(nextquestion,3000);
+      }
+      else{}
     });
 
   }
@@ -36,18 +157,36 @@ var challenge = {
 
 var array = [challenge.question1, challenge.question2,challenge.question3,challenge.question4,challenge.question5,challenge.question6,challenge.question7,
   challenge.question8,challenge.question9,challenge.question10];
-
-for(i = 1; i <11; i++)
-{   
+function startquestion()
+{ 
     var random = array[Math.floor(Math.random()*10)];
     var number = (array.splice(array.indexOf(random), 1));
+    console.log(number)
     var randomnumber =  number[0]; 
- 
     $("#question").text(randomnumber[0]); 
-    $(".answer1").text(randomnumber[1])  
-    $(".answer2").text(randomnumber[2]) 
-    $(".answer3").text(randomnumber[3]) 
-    $(".answer4").text(randomnumber[4]) 
+    a = randomnumber[1];
+    b = randomnumber[2];
+    c = randomnumber[3];
+    d = randomnumber[4];
+    $(".answer1").text(a)  
+    $(".answer2").text(b) 
+    $(".answer3").text(c) 
+    $(".answer4").text(d) 
+}
+
+function nextquestion()
+{
+  firstclick = false;
+  $("#response").empty();
+  $("#display").text("Time Remaining: 10 Seconds")
+  stopwatch.time = 10;
+  stopwatch.start();
+  startquestion();
+}
+
+function end()
+{
+  
 }
 
 var intervalId  

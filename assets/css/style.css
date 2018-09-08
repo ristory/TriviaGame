@@ -22,3 +22,9 @@ body
     margin-bottom: 20px;
 }
 
+#response, #result
+{
+    color:red;
+}
+
+
