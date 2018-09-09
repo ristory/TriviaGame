@@ -22,7 +22,7 @@ body
     margin-bottom: 20px;
 }
 
-#response, #result
+#response, #result, #rightanswer
 {
     color:red;
 }

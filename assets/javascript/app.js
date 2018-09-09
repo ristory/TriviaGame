@@ -38,6 +38,7 @@ var a;
 var b;
 var c;
 var d;
+var resultanswer;
 
 $(".content").hide();
 $(".reset").hide();
@@ -48,7 +49,6 @@ window.onload = function () {
       stopwatch.start();
       $(".btn").hide();
       $(".content").show(); 
-
     });
 
     $(".reset").on("click",function()
@@ -65,6 +65,7 @@ window.onload = function () {
       
       nextquestion();
       $(".reset").hide();
+      $("#rightanswer").hide();
       $(".content").show();
     });
 
@@ -85,9 +86,19 @@ window.onload = function () {
             }
             else if(firsttrue === true && element !=a )
             {
+              $("#rightanswer").show();
+              firsttrue = false;
               $("#response").text("You got a wrong answer!!!");
               stopwatch.stop();
-              stopwatch.reset();      
+              stopwatch.reset();
+              answer.forEach(function(element) {
+              resultanswer.forEach(function(data)
+              { 
+                if(element === data)
+                {
+                  $("#rightanswer").text("The correct answer is " + data);              
+                }
+              })})
             }
           });
           setTimeout(nextquestion,3000);
@@ -112,10 +123,20 @@ window.onload = function () {
           }
           else if(firsttrue === true && element != b)
           {
+            $("#rightanswer").show();
+            firsttrue = false;
             wrong++;
             $("#response").text("You got a wrong answer");
             stopwatch.stop();
-            stopwatch.reset()           
+            stopwatch.reset() 
+            answer.forEach(function(element) {
+              resultanswer.forEach(function(data)
+              { 
+                if(element === data)
+                {
+                  $("#rightanswer").text("The correct answer is " + data);              
+                }
+              })})          
           }
         });
         setTimeout(nextquestion,3000);
@@ -140,11 +161,20 @@ window.onload = function () {
           }
           else if(firsttrue === true && element != c)
           {
+            $("#rightanswer").show();
+            firsttrue = false;
             wrong++;
             $("#response").text("You got a wrong answer");
             stopwatch.stop();
             stopwatch.reset()
-            
+            answer.forEach(function(element) {
+              resultanswer.forEach(function(data)
+              { 
+                if(element === data)
+                {
+                  $("#rightanswer").text("The correct answer is " + data);              
+                }
+              })})
           }
         });
         setTimeout(nextquestion,3000);
@@ -170,11 +200,20 @@ window.onload = function () {
           }
           else if(firsttrue === true && element !=d)
           {
+            $("#rightanswer").show();
+            firsttrue = false;
             wrong++;
             $("#response").text("You got a wrong answer");
             stopwatch.stop();
-            stopwatch.reset()
-            
+            stopwatch.reset();
+            answer.forEach(function(element) {
+              resultanswer.forEach(function(data)
+              { 
+                if(element === data)
+                {
+                  $("#rightanswer").text("The correct answer is " + data);              
+                }
+              })})
           }
         });
         setTimeout(nextquestion,3000);
@@ -194,6 +233,7 @@ function startquestion()
     b = randomnumber[2];
     c = randomnumber[3];
     d = randomnumber[4];
+    resultanswer = new Array(a,b,c,d)
     $(".answer1").text(a)  
     $(".answer2").text(b) 
     $(".answer3").text(c) 
@@ -205,6 +245,7 @@ function nextquestion()
   firstclick = false;
   firsttrue = true;
   end++;
+  $("#rightanswer").hide();
   $("#response").empty();
   $("#result").empty();
   $("#display").text("Time Remaining: 10 Seconds");
