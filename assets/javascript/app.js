@@ -84,7 +84,8 @@ window.onload = function () {
               stopwatch.stop();
               stopwatch.reset();  
             }
-            else if(firsttrue === true && element !=a )
+          });
+            if(firsttrue === true && $(".answer1").val() !=a )
             {
               wrong++;
               console.log(wrong)
@@ -102,11 +103,8 @@ window.onload = function () {
                 }
               })})
             }
-          });
-          setTimeout(nextquestion,3000);
-        }
-        else{}
-      });
+            setTimeout(nextquestion,3000);
+          }});         
 
     $(".answer2").on("click",function()
     {
@@ -123,7 +121,8 @@ window.onload = function () {
             stopwatch.stop();
             stopwatch.reset();
           }
-          else if(firsttrue === true && element != b)
+        });
+          if(firsttrue === true && $(".answer2").val() != b)
           {
             wrong++;
             console.log(wrong)
@@ -139,13 +138,10 @@ window.onload = function () {
                 {
                   $("#rightanswer").text("The correct answer is " + data);              
                 }
-              })})          
-          }
-        });
-        setTimeout(nextquestion,3000);
-      }
-      else{}
-    });
+              })})
+            }
+            setTimeout(nextquestion,3000);
+      }});     
 
     $(".answer3").on("click",function()
     {
@@ -162,7 +158,8 @@ window.onload = function () {
             stopwatch.stop();
             stopwatch.reset();
           }
-          else if(firsttrue === true && element != c)
+        });
+          if(firsttrue === true && $(".answer3").val() != c)
           {
             wrong++;
             console.log(wrong)
@@ -179,12 +176,9 @@ window.onload = function () {
                   $("#rightanswer").text("The correct answer is " + data);              
                 }
               })})
-          }
-        });
-        setTimeout(nextquestion,3000);
-      }
-      else{}
-    });
+            }
+            setTimeout(nextquestion,3000);
+          }});     
 
     $(".answer4").on("click",function()
     {
@@ -200,9 +194,9 @@ window.onload = function () {
             $("#result").text("You got " + rightanswer + "point");
             stopwatch.stop();
             stopwatch.reset();
-
           }
-          else if(firsttrue === true && element !=d)
+        });
+          if(firsttrue === true && $(".answer4").val() !=d)
           {
             wrong++;
             console.log(wrong)  
@@ -219,12 +213,9 @@ window.onload = function () {
                   $("#rightanswer").text("The correct answer is " + data);              
                 }
               })})
-          }
-        });
-        setTimeout(nextquestion,3000);
-      }
-      else{}
-    });
+            }
+            setTimeout(nextquestion,3000);
+          }});     
 
   }
 
