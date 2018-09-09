@@ -87,6 +87,7 @@ window.onload = function () {
             else if(firsttrue === true && element !=a )
             {
               wrong++;
+              console.log(wrong)
               $("#rightanswer").show();
               firsttrue = false;
               $("#response").text("You got a wrong answer!!!");
@@ -124,9 +125,10 @@ window.onload = function () {
           }
           else if(firsttrue === true && element != b)
           {
+            wrong++;
+            console.log(wrong)
             $("#rightanswer").show();
             firsttrue = false;
-            wrong++;
             $("#response").text("You got a wrong answer");
             stopwatch.stop();
             stopwatch.reset() 
@@ -162,9 +164,10 @@ window.onload = function () {
           }
           else if(firsttrue === true && element != c)
           {
+            wrong++;
+            console.log(wrong)
             $("#rightanswer").show();
             firsttrue = false;
-            wrong++;
             $("#response").text("You got a wrong answer");
             stopwatch.stop();
             stopwatch.reset()
@@ -201,9 +204,10 @@ window.onload = function () {
           }
           else if(firsttrue === true && element !=d)
           {
+            wrong++;
+            console.log(wrong)  
             $("#rightanswer").show();
             firsttrue = false;
-            wrong++;
             $("#response").text("You got a wrong answer");
             stopwatch.stop();
             stopwatch.reset();
@@ -316,4 +320,4 @@ var stopwatch = {
         nextquestion();
        }
   }
-}
+} 
