@@ -86,6 +86,7 @@ window.onload = function () {
             }
             else if(firsttrue === true && element !=a )
             {
+              wrong++;
               $("#rightanswer").show();
               firsttrue = false;
               $("#response").text("You got a wrong answer!!!");
