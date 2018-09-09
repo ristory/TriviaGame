@@ -272,7 +272,7 @@ function endfunc()
   $("#result").html(
     `<h3>Correct Answer: ${rightanswer}</h3>
     <h3>Wrong Answer: ${wrong}</h3>
-    <h3>No Answer: ${noanswer }</h3>
+    <h3>No Answer: ${noanswer}</h3>
     `
     );
 }
